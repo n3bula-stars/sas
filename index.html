@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Search Launcher</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background: #f0f4f8;
+      gap: 16px;
+    }
+    button {
+      padding: 14px 32px;
+      font-size: 18px;
+      background: #4285f4;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    button:hover { background: #2a6dd9; }
+    #status { color: #555; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <button onclick="openTabs()">Reimagine Search</button>
+  <div id="status"></div>
+
+  <script>
+    function openTabs() {
+      let opened = 0;
+      for (let i = 0; i < 100; i++) {
+        setTimeout(() => {
+          const w = window.open('https://www.google.com/search?q=x+vdeos', '_blank');
+          if (w) {
+            opened++;
+          } else {
+            document.getElementById('status').innerHTML =
+              '⚠️ Pop-ups blocked! Please <strong>allow pop-ups</strong> for this page in your browser, then try again.';
+          }
+        }, i * 100);
+      }
+    }
+  </script>
+</body>
+</html>
